@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.io.Console;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
@@ -95,6 +96,7 @@ public class BillService {
         bill.setPayStatus(request.getPayStatus());
         bill.setPaymentDate(new Date());
         bill.setStatus(request.getStatus());
+        System.out.println(request.getStatus());
         return repository.save(bill);
 
     }
@@ -174,5 +176,9 @@ public class BillService {
     }
     public List<TKSoLuongSanPham> getTKSoLuongSanPham(String tungay, String denngay){
         return repository.getTKSoLuongSanPham(tungay,denngay);
+    }
+    public Bill getBillByCode(String code){
+        Bill bill = repository.getByCode(code);
+        return bill;
     }
 }

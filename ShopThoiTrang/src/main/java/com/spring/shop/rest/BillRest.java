@@ -26,6 +26,10 @@ public class BillRest {
     public ResponseEntity<?> addBill(@RequestBody BillRequest request){
         return ResponseEntity.ok(service.add(request));
     }
+    @GetMapping("/getbill/{code}")
+    public ResponseEntity<?> getBill(@PathVariable("code") String code){
+        return ResponseEntity.ok(service.getBillByCode(code));
+    }
     @PostMapping("/billTaiQuay")
     public ResponseEntity<?> billTaiQuay(@RequestBody BillTaiQuayRequest request){
         return ResponseEntity.ok(service.addBillTaiQuay(request));
